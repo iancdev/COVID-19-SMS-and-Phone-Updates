@@ -93,7 +93,7 @@ def sms():
     body = body.lower()
 
     if ('hi' in body) or ('hello' in body) or ('help' in body):
-        resp.message("Hello! Thanks for your interest in keeping updated with COVID-19 statistics in Canada. Ask me for the latest covid-19 cases or to give you an update, and you will receive the latest statistics.")
+        resp.message("Hello! Thanks for your interest in keeping updated with COVID-19 statistics. Ask me for the latest covid-19 cases or to give you an update, and you will receive the latest statistics.")
     elif ('update' in body) or ('latest' in body):
         resp.message(covid19.getData('message', country, False, altAPI))
 
@@ -122,6 +122,12 @@ def sms():
             config.write(configfile)
     elif ('world' in body):
         resp.message(covid19.getWorld('message', altAPI))
+    else:
+        try:
+            currentCountry = covid19.convertCountry(body)
+            resp.message(covid19.getData('message', currentCountry, False, False))
+        except:
+            resp.message("Sorry, I don't understand. If you'd like to find a country, reply with your country name.")
     return str(resp)
 
 

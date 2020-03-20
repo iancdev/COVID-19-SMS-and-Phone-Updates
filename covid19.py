@@ -49,8 +49,11 @@ def getData(inputType, country = 'us', compare = False, altAPI = False):
     else:
         url = 'https://corona.lmao.ninja/countries/' + country
     r = requests.get(url)
-    with open(country, 'r+') as src, open(country + '.bak', 'w+') as dst:
+    try:
+        with open(country, 'r+') as src, open(country + '.bak', 'w+') as dst:
             dst.write(src.read()) #Backup
+    except:
+        pass
     with open(country, 'wb') as outfile:
         outfile.write(r.content) #Get latest and save
     with open(country, "r+") as dataFile:
@@ -139,3 +142,17 @@ def getWorld(inputType, altAPI = False):
     composedMessage = "COVID-19 Worldwide Data{linebreak}Total cases: "+str(cases)+"{}Total deaths: "+str(death)+"{}Total recovered: "+str(recovered)+"{}Current fatality rate: "+str(fatalityRatePercentage)+"%{}"+str(fatalityRatio)+" in 100 people will live based on current statistics{customizeEnd}"
     composedMessage = messageFormat(composedMessage, inputType)
     return composedMessage
+
+def convertCountry(message):
+    message = message.lower()
+    if 'united kingdom' in message:
+        message = 'uk'
+    elif 'united states' in message:
+        message = 'us'
+    elif 'south korea' in message:
+        message = 's. korea'
+    elif 'united arab emirates' in message:
+        message = 'uae'
+    else:
+        message = message
+    return message
