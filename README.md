@@ -6,9 +6,10 @@ Requires Twilio and powered by https://github.com/NovelCOVID/API/.
 Has to be run on a Python powered web server.
 
 # How to use
-1. Run main.py
-2. Edit config.ini to your liking
-3. Run main.py again
+1. Run pip install -r requirements.txt
+2. Run main.py
+3. Edit config.ini to your liking
+4. Run main.py again
 
 # Thing you can text
 - "hello" to see introduction
