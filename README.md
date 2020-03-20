@@ -1,4 +1,5 @@
 # COVID-19 SMS and Phone Updates
+<img src="https://i.imgur.com/fsR3tJx.png" />
 Allows you to get a text message when a statistic for your selected country updates. Also let's you manually get updated by texting to your Twilio number, or by calling your Twilio number.
 
 Requires Twilio and powered by https://github.com/NovelCOVID/API/.
